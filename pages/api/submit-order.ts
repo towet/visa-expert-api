@@ -5,7 +5,7 @@ import Cors from 'cors';
 // Initialize CORS middleware
 const cors = Cors({
   methods: ['GET', 'POST', 'OPTIONS'],
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://visa-expert-payment.netlify.app'], // Allow both possible Vite ports and deployed frontend
+  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://visa-expert.netlify.app'], // Updated to match the actual frontend domain
   credentials: true,
 });
 
