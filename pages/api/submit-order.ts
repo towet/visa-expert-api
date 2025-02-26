@@ -92,7 +92,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     console.log('Submit order response:', submitResponse.data);
 
-    return res.status(200).json(submitResponse.data);
+    // Ensure we return the order_tracking_id
+    if (!submitResponse.data.order_tracking_id) {
+      throw new Error('No order tracking ID received from PesaPal');
+    }
+
+    return res.status(200).json({
+      order_tracking_id: submitResponse.data.order_tracking_id
+    });
   } catch (error: any) {
     console.error('Error submitting order:', {
       error_message: error.message,
